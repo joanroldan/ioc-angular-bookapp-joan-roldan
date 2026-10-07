@@ -1,3 +1,23 @@
+# ioc-angular-bookapp-joan-roldan
+
+Aplicació web desenvolupada en Angular per a la gestió i consulta d'un catàleg de llibres.
+
+## Autor/a
+* **Joan Roldán González**
+
+## Descripció del projecte
+Projecte inicial desenvolupat com a part de l'EAC1 del mòdul de Programació Avançada (IOC). Inclou l'estructura base d' carpetes, la configuració del control de versions amb branques a GitHub i la personalització inicial de la interfície amb components Standalone i estils en SCSS.
+
+## Versions i entorn
+* **Node.js:** (Versió instal·lada al sistema)
+* **Angular CLI:** 22.2.0
+* **Gestor de paquets:** npm
+
+## Com executar l'aplicació
+1. Clona el repositori:
+   ```bash
+   git clone https://github.com/joanroldan/bookapp
+
 # IocAngularBookappJoanRoldan
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.0.
