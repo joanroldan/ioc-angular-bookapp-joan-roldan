@@ -1,0 +1,25 @@
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.category-badge,
+.featured-badge {
+  display: inline-block;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.category-badge {
+  background-color: #ebf8ff;
+  color: #2b6cb0;
+}
+
+.featured-badge {
+  background-color: #fef3c7;
+  color: #975a16;
+}

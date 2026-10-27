@@ -1,0 +1,27 @@
+<article class="book-card">
+  <h3>{{ book.titol }}</h3>
+
+  <p class="author">
+    {{ book.autor }}
+  </p>
+
+  <app-category-badge
+    [category]="book.categoria"
+    [featured]="book.destacat">
+  </app-category-badge>
+
+  <p class="description">
+    {{ book.descripcio }}
+  </p>
+
+  <div class="book-details">
+    <p>Data de publicació: {{ book.dataPublicacio | date: 'dd/MM/yyyy' }}</p>
+    <p>Pàgines: {{ book.pagines }}</p>
+  </div>
+
+  <button
+    type="button"
+    (click)="selectCard()">
+    Seleccionar llibre
+  </button>
+</article>

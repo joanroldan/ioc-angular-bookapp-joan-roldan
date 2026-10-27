@@ -1,79 +1,58 @@
 # ioc-angular-bookapp-joan-roldan
 
-Aplicació web desenvolupada en Angular per a la gestió i consulta d'un catàleg de llibres.
-
-## Autor/a
-* **Joan Roldán González**
-
-## Descripció del projecte
-Projecte inicial desenvolupat com a part de l'EAC1 del mòdul de Programació Avançada (IOC). Inclou l'estructura base d' carpetes, la configuració del control de versions amb branques a GitHub i la personalització inicial de la interfície amb components Standalone i estils en SCSS.
+Aplicació Angular per gestionar i consultar un catàleg de llibres.
 
 ## Versions i entorn
-* **Node.js:** (Versió instal·lada al sistema)
-* **Angular CLI:** 22.2.0
-* **Gestor de paquets:** npm
 
-## Com executar l'aplicació
-1. Clona el repositori:
-   ```bash
-   git clone https://github.com/joanroldan/bookapp
+- Node.js: v24.21.0
+- Angular CLI: v22.2.0
+- Angular: v22.2.0
+- Gestor de paquets: npm
 
-# IocAngularBookappJoanRoldan
+## Instal·lació i execució
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.0.
+```bash
+git clone https://github.com/joanroldan/ioc-angular-bookapp-joan-roldan.git
+cd ioc-angular-bookapp-joan-roldan
+npm install
+npm start
+```
 
-## Development server
+L'aplicació estarà disponible a `http://localhost:4200/`.
 
-To start a local development server, run:
+També es pot iniciar amb:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Comandes principals
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Compilar el projecte:
 
 ```bash
-ng generate component component-name
+npm run build
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Executar les proves:
 
 ```bash
-ng generate --help
+npm test
 ```
 
-## Building
+## Components creats
 
-To build the project run:
+- `BookFilterComponent`: formulari per filtrar per text, categoria i llibres destacats.
+- `BookListComponent`: mostra la llista de llibres filtrats.
+- `BookCardComponent`: mostra el resum d'un llibre i permet seleccionar-lo.
+- `CategoryBadgeComponent`: mostra la categoria i el distintiu “Destacat”.
 
-```bash
-ng build
+La comunicació entre components utilitza `@Input`, `@Output` i `EventEmitter`.
+
+## Branca de lliurament
+
+El lliurament final es publica a la branca:
+
+```text
+ra2-components
 ```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

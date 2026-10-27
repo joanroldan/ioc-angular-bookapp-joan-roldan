@@ -1,0 +1,70 @@
+<form class="filter-panel"
+  #filterForm="ngForm"
+  (ngSubmit)="applyFilters()">
+  <div class="filter-heading">
+    <h2>Filtrar llibres</h2>
+    <p>Troba un llibre per títol, autor o categoria.</p>
+  </div>
+
+  <div class="filter-fields">
+    <div class="filter-field">
+      <label for="book-search">Cercar per títol o autor</label>
+      <input
+        id="book-search"
+        name="text"
+        type="text"
+        [(ngModel)]="text"
+        #textInput="ngModel"
+        required
+        minlength="3"
+        placeholder="Ex.: Dune o Ken Follett">
+
+      @if (textInput.invalid && (textInput.touched || textInput.dirty)) {
+        <p class="error-message" role="alert">
+          Introdueix almenys 3 caràcters.
+        </p>
+      }
+    </div>
+
+    <div class="filter-field">
+      <label for="book-category">Categoria</label>
+      <select
+        id="book-category"
+        name="category"
+        [(ngModel)]="category">
+        <option value="">Totes les categories</option>
+
+        @for (categoryOption of categories; track categoryOption) {
+          <option [value]="categoryOption">
+            {{ categoryOption }}
+          </option>
+        }
+      </select>
+    </div>
+  </div>
+
+  <div class="filter-actions">
+    <label class="featured-option">
+      <input
+        type="checkbox"
+        name="featuredOnly"
+        [(ngModel)]="featuredOnly">
+      <span>Només llibres destacats</span>
+    </label>
+
+    <div class="filter-buttons">
+      <button
+        type="button"
+        class="reset-button"
+        (click)="resetFilters(filterForm)">
+        Restablir
+      </button>
+
+      <button
+        type="submit"
+        [disabled]="filterForm.invalid">
+        Aplicar filtres
+      </button>
+    </div>
+  </div>
+</form>

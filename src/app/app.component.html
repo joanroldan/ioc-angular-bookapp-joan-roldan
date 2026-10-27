@@ -1,24 +1,61 @@
-<main class="main-container">
+<a class="skip-link" href="#main-content">
+  Saltar al contingut principal
+</a>
+<main id="main-content" class="main-container" tabindex="-1">
   <h1>{{ appName }}</h1>
 
   <p class="description">
-    Joan Roldán González - Aplicació web per a la gestió i consulta d'un catàleg de llibres creada amb Angular.
+    Catàleg de llibres
   </p>
 
-  <section class="card">
-    <h3>Dades bàsiques del projecte</h3>
-    <ul>
-      <li>Framework: Angular 22</li>
-      <li>Estructura: Standalone components</li>
-      <li>Estils: SCSS</li>
-    </ul>
+  <app-book-filter
+    [categories]="categories"
+    (filtersChanged)="onFiltersChanged($event)">
+  </app-book-filter>
+
+  <p class="results-count" aria-live="polite">
+    Resultats trobats: {{ filteredBooks.length }}
+  </p>
+
+  <app-book-list
+    [books]="filteredBooks"
+    (bookSelected)="onBookSelected($event)">
+  </app-book-list>
+
+  @if (selectedBook) {
+  <section class="selected-book">
+    <h2>Detall del llibre seleccionat</h2>
+
+    <h3>{{ selectedBook.titol }}</h3>
+
+    <p>
+      <strong>Autor:</strong>
+      {{ selectedBook.autor }}
+    </p>
+
+    <p>
+      <strong>Categoria:</strong>
+      {{ selectedBook.categoria }}
+    </p>
+
+    <p>
+      <strong>Descripció:</strong>
+      {{ selectedBook.descripcio }}
+    </p>
+
+    <p>
+      <strong>Data de publicació:</strong>
+      {{ selectedBook.dataPublicacio | date: 'dd/MM/yyyy' }}
+    </p>
+
+    <p>
+      <strong>Pàgines:</strong>
+      {{ selectedBook.pagines }}
+    </p>
   </section>
-
-  <aside class="sidebar-note">
-    <p>Nota: Entorn de desenvolupament configurat correctament a la branca <code>ra1-setup</code>.</p>
-  </aside>
-
-  <p class="status-text">Projecte base llest</p>
+} @else {
+  <p class="no-selection">
+    Selecciona un llibre per veure'n el detall.
+  </p>
+  }
 </main>
-
-<router-outlet />

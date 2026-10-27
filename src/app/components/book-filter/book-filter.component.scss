@@ -1,0 +1,137 @@
+.filter-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  border: 1px solid #dbeafe;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #eff6ff, #ffffff);
+  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.08);
+}
+
+.filter-heading h2 {
+  margin: 0;
+  color: #1e3a8a;
+  font-size: 1.35rem;
+}
+
+.filter-heading p {
+  margin: 0.35rem 0 0;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.filter-fields {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(220px, 1fr);
+  gap: 1rem;
+}
+
+.filter-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.filter-field label {
+  color: #334155;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.filter-field input,
+.filter-field select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #1e293b;
+  font: inherit;
+}
+
+.filter-field input:focus,
+.filter-field select:focus {
+  outline: 3px solid rgba(59, 130, 246, 0.2);
+  border-color: #3b82f6;
+}
+
+.filter-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.featured-option {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: #475569;
+  font-size: 0.95rem;
+}
+
+.featured-option input {
+  width: 1rem;
+  height: 1rem;
+  accent-color: #2563eb;
+}
+
+.filter-actions button {
+  padding: 0.55rem 0.85rem;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background-color: #2563eb;
+  color: #ffffff;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.filter-actions .reset-button {
+  border-color: #cbd5e1;
+  background-color: #ffffff;
+  color: #475569;
+}
+
+.filter-actions .reset-button:hover {
+  background-color: #f1f5f9;
+}
+
+.filter-actions button:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.filter-actions button:disabled {
+  background-color: #94a3b8;
+  cursor: not-allowed;
+  transform: none;
+}
+
+@media (max-width: 650px) {
+  .filter-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-buttons {
+    justify-content: stretch;
+  }
+
+  .filter-buttons button {
+    flex: 1;
+  }
+}

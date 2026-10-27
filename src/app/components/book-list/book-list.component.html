@@ -1,0 +1,18 @@
+<section class="book-list">
+  <h2>Llibres disponibles</h2>
+
+ @if (books.length === 0) {
+  <p class="empty-message" role="status">
+    No s'han trobat llibres amb aquests filtres.
+  </p>
+} @else {
+  <div class="book-grid">
+    @for (book of books; track book.id) {
+      <app-book-card
+        [book]="book"
+        (cardSelected)="selectBook($event)">
+      </app-book-card>
+    }
+  </div>
+}
+</section>
