@@ -1,5 +1,5 @@
 <form class="filter-panel"
-  #filterForm="ngForm"
+  [formGroup]="searchForm"
   (ngSubmit)="applyFilters()">
   <div class="filter-heading">
     <h2>Filtrar llibres</h2>
@@ -11,17 +11,33 @@
       <label for="book-search">Cercar per títol o autor</label>
       <input
         id="book-search"
-        name="text"
         type="text"
-        [(ngModel)]="text"
-        #textInput="ngModel"
-        required
-        minlength="3"
+        formControlName="text"
         placeholder="Ex.: Dune o Ken Follett">
 
-      @if (textInput.invalid && (textInput.touched || textInput.dirty)) {
+      @if (searchForm.controls.text.touched &&
+           searchForm.controls.text.hasError('required')) {
+        <p class="error-message" role="alert">
+          La cerca és obligatòria.
+        </p>
+      } @else if (searchForm.controls.text.touched &&
+                   searchForm.controls.text.hasError('minlength')) {
         <p class="error-message" role="alert">
           Introdueix almenys 3 caràcters.
+        </p>
+      } @else if (searchForm.controls.text.pending) {
+        <p class="async-message" role="status">
+          Comprovant si hi ha resultats...
+        </p>
+      } @else if (searchForm.controls.text.touched &&
+                   searchForm.controls.text.hasError('noResults')) {
+        <p class="error-message" role="alert">
+          No s’han trobat resultats per a aquesta cerca.
+        </p>
+      } @else if (searchForm.controls.text.touched &&
+                   searchForm.controls.text.hasError('apiError')) {
+        <p class="error-message" role="alert">
+          No s’ha pogut validar la cerca amb l’API.
         </p>
       }
     </div>
@@ -30,8 +46,7 @@
       <label for="book-category">Categoria</label>
       <select
         id="book-category"
-        name="category"
-        [(ngModel)]="category">
+        formControlName="category">
         <option value="">Totes les categories</option>
 
         @for (categoryOption of categories; track categoryOption) {
@@ -47,8 +62,7 @@
     <label class="featured-option">
       <input
         type="checkbox"
-        name="featuredOnly"
-        [(ngModel)]="featuredOnly">
+        formControlName="featuredOnly">
       <span>Només llibres destacats</span>
     </label>
 
@@ -56,15 +70,28 @@
       <button
         type="button"
         class="reset-button"
-        (click)="resetFilters(filterForm)">
+        (click)="resetFilters()">
         Restablir
       </button>
 
       <button
         type="submit"
-        [disabled]="filterForm.invalid">
+        [disabled]="searchForm.invalid || searchForm.pending">
         Aplicar filtres
       </button>
     </div>
   </div>
+
+  @if (searchHistory.length > 0) {
+    <div class="search-history">
+      <p>Últimes cerques:</p>
+      <div class="history-buttons">
+        @for (term of searchHistory; track term) {
+          <button type="button" (click)="recoverSearch(term)">
+            {{ term }}
+          </button>
+        }
+      </div>
+    </div>
+  }
 </form>

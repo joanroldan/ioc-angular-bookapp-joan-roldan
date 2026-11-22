@@ -57,6 +57,21 @@
   border-color: #3b82f6;
 }
 
+.error-message,
+.async-message {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.error-message {
+  color: #b91c1c;
+}
+
+.async-message {
+  color: #2563eb;
+}
+
 .filter-actions {
   display: flex;
   align-items: center;
@@ -115,6 +130,43 @@
   background-color: #94a3b8;
   cursor: not-allowed;
   transform: none;
+}
+
+.search-history {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #dbeafe;
+
+  p {
+    margin: 0;
+    color: #475569;
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+}
+
+.history-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.history-buttons button {
+  padding: 0.35rem 0.65rem;
+  border: 1px solid #93c5fd;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #1d4ed8;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.history-buttons button:hover {
+  background: #dbeafe;
 }
 
 @media (max-width: 650px) {

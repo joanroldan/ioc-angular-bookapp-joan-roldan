@@ -13,6 +13,22 @@
     (filtersChanged)="onFiltersChanged($event)">
   </app-book-filter>
 
+  @if (loading) {
+    <p class="loading-state" role="status">Carregant dades...</p>
+  }
+
+  @if (error) {
+    <div class="error-state" role="alert">
+      <p>{{ error }}</p>
+      <button type="button" (click)="retryLoad()">Reintentar</button>
+    </div>
+  }
+
+  <app-book-form
+    [categories]="categories"
+    (bookCreated)="onBookCreated($event)">
+  </app-book-form>
+
   <p class="results-count" aria-live="polite">
     Resultats trobats: {{ filteredBooks.length }}
   </p>

@@ -80,6 +80,22 @@
   font-weight: 700;
 }
 
+.loading-state,
+.error-state {
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.loading-state {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.error-state {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
 .selected-book {
   padding: 1.5rem;
   border: 1px solid #bfdbfe;

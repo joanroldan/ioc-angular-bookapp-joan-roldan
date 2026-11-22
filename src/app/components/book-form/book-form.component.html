@@ -1,0 +1,90 @@
+<section class="book-form-panel">
+  <div class="book-form-heading">
+    <h2>Crear un llibre nou</h2>
+    <p>Afegeix un llibre al catàleg mitjançant el formulari.</p>
+  </div>
+
+  <form [formGroup]="bookForm" (ngSubmit)="submit()">
+    <div class="form-field">
+      <label for="titol">Títol</label>
+      <input id="titol" type="text" formControlName="titol">
+      @if (bookForm.controls.titol.touched && bookForm.controls.titol.invalid) {
+        <p class="field-error">El títol és obligatori i ha de tenir almenys 3 caràcters.</p>
+      }
+    </div>
+
+    <div class="form-field">
+      <label for="autor">Autor</label>
+      <input id="autor" type="text" formControlName="autor">
+      @if (bookForm.controls.autor.touched && bookForm.controls.autor.invalid) {
+        <p class="field-error">L’autor és obligatori.</p>
+      }
+    </div>
+
+    <div class="form-field">
+      <label for="descripcio">Descripció</label>
+      <textarea id="descripcio" rows="4" formControlName="descripcio"></textarea>
+      @if (bookForm.controls.descripcio.touched && bookForm.controls.descripcio.invalid) {
+        <p class="field-error">La descripció ha de tenir almenys 10 caràcters.</p>
+      }
+    </div>
+
+    <div class="form-field">
+      <label for="categoria">Categoria</label>
+      <select id="categoria" formControlName="categoria">
+        <option value="">Selecciona una categoria</option>
+        @for (category of categories; track category) {
+          <option [value]="category">{{ category }}</option>
+        }
+      </select>
+      @if (bookForm.controls.categoria.touched && bookForm.controls.categoria.invalid) {
+        <p class="field-error">Selecciona una categoria.</p>
+      }
+    </div>
+
+    <div class="form-field">
+      <label for="dataPublicacio">Data de publicació</label>
+      <input id="dataPublicacio" type="date" formControlName="dataPublicacio">
+      @if (bookForm.controls.dataPublicacio.touched && bookForm.controls.dataPublicacio.invalid) {
+        <p class="field-error">La data és obligatòria.</p>
+      }
+    </div>
+
+    <div class="form-field">
+      <label for="pagines">Nombre de pàgines</label>
+      <input id="pagines" type="number" formControlName="pagines">
+      @if (bookForm.controls.pagines.touched && bookForm.controls.pagines.invalid) {
+        <p class="field-error">El nombre de pàgines ha de ser superior a 0.</p>
+      }
+    </div>
+
+    <label class="featured-field">
+      <input type="checkbox" formControlName="destacat">
+      Llibre destacat
+    </label>
+
+    <button type="submit" [disabled]="bookForm.invalid">Crear llibre</button>
+  </form>
+
+  @if (history.length > 0) {
+    <h3>Historial d’operacions</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Acció</th>
+          <th>Data</th>
+          <th>Llibre</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (operation of history; track $index) {
+          <tr>
+            <td>{{ operation.action }}</td>
+            <td>{{ operation.date | date: 'dd/MM/yyyy HH:mm' }}</td>
+            <td>{{ operation.titol }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</section>
